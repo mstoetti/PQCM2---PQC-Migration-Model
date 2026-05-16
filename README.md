@@ -1,4 +1,4 @@
-# Machine-Readable Representation of an Application Example
+# Cryptographic Migration with Implicit Dependencies: Application Example (Asset)
 
 This repository provides a machine-readable representation of the cryptographic
 dependencies in a simplified but realistic automotive scenario, namely the
