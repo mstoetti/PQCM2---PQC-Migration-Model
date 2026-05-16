@@ -10,22 +10,10 @@ both the topological dependencies between components and additional non-obvious
 or implicit dependencies. The accompanying example queries
 ([`cypher/queries.cypher`](./cypher/queries.cypher)) serve as a starting point
 for further exploration of the application example and of the method described
-in the underlying paper.# Machine-Readable Representation of an Application Example
-
-This repository provides a machine-readable representation of the cryptographic
-dependencies in a simplified but realistic automotive scenario, namely the
-dependencies between the system and software components of an exemplary
-in-vehicle architecture. The representation is encoded as a
-[Cypher](https://neo4j.com/docs/cypher-manual/current/) script
-([`cypher/setup_graph_db.cypher`](./cypher/setup_graph_db.cypher)) and captures
-both the topological dependencies between components and additional non-obvious
-or implicit dependencies. The accompanying example queries
-([`cypher/queries.cypher`](./cypher/queries.cypher)) serve as a starting point
-for further exploration of the application example and of the method described
 in the underlying paper.
 
 The Cypher scripts in the [`cypher/`](./cypher) folder can be used with any
-graph database that supports Cypher; they have been developed and tested with
+graph database that supports Cypher. They have been developed and tested with
 Neo4j [[1]](#references).
 
 The file [`cypher/setup_graph_db.cypher`](./cypher/setup_graph_db.cypher)
