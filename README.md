@@ -1,3 +1,60 @@
+# Artifact — Reproducing the Experiments
+
+Everything reported in Sec. 6 and in the two tables is produced by these
+scripts from a single source of truth: the graph model in
+`../cypher//setup_graph_db.cypher`. 
+
+**Requirements:** Python 3.8+. Standard library only — no dependencies, no
+network access. Runs in a few seconds.
+
+```bash
+cd artifact
+python3 run_experiments.py        # configurations A–E  -> results.json
+python3 make_listings.py          # -> ../example.txt, example_2.txt, example_3.txt
+python3 security_aware_oracle.py  # security-instrumented oracle (Sec. 5.6)
+```
+
+Output is deterministic: every collection is iterated in sorted order, so
+repeated runs are byte-identical. (The listings shipped with earlier drafts were
+raw Python `set` dumps, whose iteration order is not stable — that is why they
+are generated rather than pasted.)
+
+---
+
+## What each script does
+
+| script | purpose |
+|---|---|
+| `migration.py` | The model. Tarjan SCC, condensation, Algorithm 1 with the diagnostic refinement loop, the oracle `ζ`, the test function `P`, and an **independent** admissibility checker |
+| `run_experiments.py` | Runs configurations A–E and writes `results.json` |
+| `make_listings.py` | Generates the three migration-strategy listings |
+| `security_aware_oracle.py` | A separate experiment: what changes if `ζ` is instrumented for security properties. Varies the *oracle*, not `P₀`, so it is not one of the lettered configurations |
+
+`check_admissible()` in `migration.py` is deliberately **not** used by the
+algorithm. It verifies the output against the ground-truth dependency sets after
+the fact, and is what detects the silent security violations in configurations D
+and E. Keeping it separate is the point: the algorithm must not be able to see
+what the checker sees.
+
+## The configurations
+
+`P₀` is the test function available *before* the first migration step.
+
+| | `P₀` detects | models |
+|---|---|---|
+| **A** | all five implicit classes | full domain knowledge |
+| **B** | nothing (`P ≡ 0`) | planning from the CBOM alone |
+| **C** | the two *security* classes only | the memory-based test function of Sec. 5.2.3, and no more — exactly what (C1a) demands |
+| **D** | everything except `secure_access` | (C1a) violated in one class |
+| **E** | the three *functional* classes only | "migrate first, review security later" |
+
+A–E all hold the oracle fixed and vary `P₀`. `security_aware_oracle.py` does the
+opposite — it varies the oracle — so it is reported separately below rather than
+as a lettered configuration.
+
+
+
+
 # Cryptographic Migration with Implicit Dependencies: Application Example (Asset)
 
 This repository provides a machine-readable representation of the cryptographic
