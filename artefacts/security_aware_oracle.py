@@ -45,7 +45,7 @@ from migration import (
 )
 
 HERE = Path(__file__).resolve().parent
-GRAPH = HERE.parent / "assets" / "graphdb" / "setup_graph_db.cypher"
+GRAPH = HERE.parent / "cypher"  / "setup_graph_db.cypher"
 
 
 class SecurityAwareOracle(Oracle):
