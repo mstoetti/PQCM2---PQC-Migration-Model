@@ -44,8 +44,6 @@ DEFAULT_GRAPH = HERE.parent / "cypher" / "setup_graph_db.cypher"
 
 ALL_IMPLICIT = tuple(SEC_CLASSES) + tuple(FUNC_IMPLICIT_CLASSES)
 
-# Order in which an engineer would plausibly implement further partial tests
-# once a failing smoke scenario points at them (Sec. 5.2.3).
 REFINE_ORDER = ("shared_keys", "communication_dependency", "functional_dependency")
 
 
