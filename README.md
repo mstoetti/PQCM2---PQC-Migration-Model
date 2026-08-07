@@ -1,3 +1,20 @@
+# Repository Structure
+
+```
+.
+├── artefacts/
+│   ├── make_listings.py         # Generates the three migration-strategy listings
+│   ├── migration.py             # The model: Tarjan SCC, condensation, Algorithm 1 
+│   ├── run_experiments.py       # Runs configurations A–E
+│   ├── security_aware_oracle.py # `ζ` with instrumented for security properties
+├── cypher/
+│   ├── setup_graph_db.cypher    # CREATE statements to instantiate the graph
+│   └── queries.cypher           # Example queries presented below
+├── pics/                        # Screenshots referenced in this README
+└── README.md
+```
+
+
 # Artifact — Reproducing the Experiments
 
 Everything reported in Sec. 6 and in the two tables is produced by these
@@ -80,16 +97,6 @@ application example described in the underlying paper. The script has been
 imported into and tested with
 [Neo4j version 2025.10.1](https://neo4j.com/release-notes/database/neo4j-2025-10-1/).
 
-## Repository Structure
-
-```
-.
-├── cypher/
-│   ├── setup_graph_db.cypher   # CREATE statements to instantiate the graph
-│   └── queries.cypher          # Example queries presented below
-├── pics/                       # Screenshots referenced in this README
-└── README.md
-```
 
 ## Neo4j Installation and Data Import
 
